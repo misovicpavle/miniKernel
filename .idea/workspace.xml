@@ -27,7 +27,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efeb7205-26ae-4cf3-8021-478b2044c1f8" name="Changes" comment="" />
+    <list default="true" id="efeb7205-26ae-4cf3-8021-478b2044c1f8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/containers.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/containers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kernel_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kernel_main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mmio_driver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mmio_driver.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +41,13 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="CurrentDebugProfile">
+    <option name="debugProfileId" value="19bdd497-9476-44f4-9556-7a4e5360961d" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="15" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileTemplateManagerImpl">
@@ -47,11 +60,86 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;misovicpavle&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/misovicpavle/miniOS",
+    "accountId": "e737dd60-a5f8-4662-af9c-cbd3824524e0"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="7Aj3XGw3" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.3557575808745863" />
+      <entry key="MS500" value="3.2019619953223684" />
+      <entry key="S2" value="5.506727101872617" />
+      <entry key="S5" value="6.3359108265808475" />
+      <entry key="S10" value="6.688391352306003" />
+      <entry key="S30" value="8.283418601103762" />
+      <entry key="S60" value="11.431666372685743" />
+      <entry key="M2" value="20.308343510213973" />
+      <entry key="M5" value="41.360822206553244" />
+      <entry key="M10" value="56.03308612286805" />
+      <entry key="M15" value="62.39104937834234" />
+      <entry key="M30" value="69.66788979760794" />
+      <entry key="H1" value="73.69274943890642" />
+      <entry key="H2" value="75.8098430797046" />
+      <entry key="H4" value="76.89562979873577" />
+      <entry key="D1" value="77.81463407303636" />
+      <entry key="W1" value="77.97348703276121" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.3244191806208685" />
+      <entry key="MS500" value="3.1670405102835515" />
+      <entry key="S2" value="5.488889365503063" />
+      <entry key="S5" value="6.327564357032554" />
+      <entry key="S10" value="6.683973839229126" />
+      <entry key="S30" value="8.281668170265325" />
+      <entry key="S60" value="11.43053509556037" />
+      <entry key="M2" value="20.307420678498186" />
+      <entry key="M5" value="41.3601093863237" />
+      <entry key="M10" value="56.03260873861234" />
+      <entry key="M15" value="62.390696035397184" />
+      <entry key="M30" value="69.66769300471496" />
+      <entry key="H1" value="73.69264546899528" />
+      <entry key="H2" value="75.80978962773933" />
+      <entry key="H4" value="76.89560269641117" />
+      <entry key="D1" value="77.81462950288017" />
+      <entry key="W1" value="77.9734863785703" />
+    </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -64,6 +152,9 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3I30m5shtIn8v30ECHbUCHxVqce" />
+  <component name="ProjectStatusUIService">{
+  &quot;uiKindId&quot;: &quot;Widget&quot;
+}</component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -73,16 +164,21 @@
     "CMake Application.compiler.executor": "Run",
     "CidrDebugProfileConversion": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/misovicpavle/CLionProjects/compiler",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/run/media/misovicpavle/1EC613FBC613D23F/Users/Pavle/CLionProjects/miniOS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
@@ -91,15 +187,24 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "/home/misovicpavle/CLionProjects/compiler/main.cpp",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/include" />
+    </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="compiler" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="compiler" TARGET_NAME="compiler" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="compiler" RUN_TARGET_NAME="compiler">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -116,7 +221,7 @@
       &quot;second&quot;: &quot;21604fd1-afcf-48c1-bd87-4e79a24cde72&quot;
     }
   ],
-  &quot;modificationCount&quot;: 2
+  &quot;modificationCount&quot;: 10
 }</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -125,6 +230,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1786978101320</updated>
+      <workItem from="1788544176282" duration="8895000" />
+      <workItem from="1788959983089" duration="1000" />
+      <workItem from="1789397034887" duration="404000" />
     </task>
     <servers />
   </component>
