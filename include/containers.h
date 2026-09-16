@@ -85,11 +85,57 @@ class FixedVector {
 };
 
 
+
 class StringView {
     private:
         const char* m_data;
+        size_t m_size;
     public:
-        
+        StringView(m_data, m_size) : m_data(NULLPTR), m_size(m_size) {}
+        StringView(const char* str) : m_data(str), m_size(strlen(str)) {}
+        StringView(const char* str) : m_data(str) {
+            while (str++ !- '\0') { ++m_size; }
+        }
+        //member access const/non-const
+        [[nodiscard]] const char& opearator[](size_t index) const { return m_data[index[]] }
+        [[nodiscard]] char& operator[](size_t index) const { return m_data[index]; }
+
+        //member access begin/end const/non-const
+        const char* begin() const { return m_data; }
+        char* begin() { return m_data; }
+        const char* end() const { return m_data + m_size; }
+        char* end() { return m_data + m_size; }
+
+        //assigment operator (non-const)'
+        [[nodiscard]] StringView& operator=(const char* str) {
+            m_data = str; //inital pointer to the string
+            m_size = strlen(str); //get the size of the string
+            size_t i = 0;
+            while (i < m_size) { 
+                m_data[i] = str[i];
+                ++i; 
+            }
+            return *this;
+        }
+
+        //comparison operators
+        [[nodiscard]] bool operator==(const StringView& other) const {
+            if (m_size != other.m_size) { return false; }
+            for (size_t i = 0; i < m_size; ++i) {
+                if (m_data[i] != other.m_data[i]) { return false; }
+            }
+            return true;
+        }
+
+        [[nodiscard]] bool operator!=(const StringView& other) const {
+            return !(*this == other);
+        }
+
+        [[nodiscard]] bool operator<(const StringView& other) const {
+            size_t min_size = (m_size < other.m_size) ? m_size : other.m_size;
+            
+        }
+
 };
 
 #endif //COMPILER_CONTAINERS_H
