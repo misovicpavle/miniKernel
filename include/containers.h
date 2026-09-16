@@ -94,7 +94,8 @@ class StringView {
         StringView(m_data, m_size) : m_data(NULLPTR), m_size(m_size) {}
         StringView(const char* str) : m_data(str), m_size(strlen(str)) {}
         StringView(const char* str) : m_data(str) {
-            while (str++ !- '\0') { ++m_size; }
+            m_size = 0;
+            while (str++ != '\0') { ++m_size; }
         }
         //member access const/non-const
         [[nodiscard]] const char& opearator[](size_t index) const { return m_data[index[]] }
@@ -131,11 +132,32 @@ class StringView {
             return !(*this == other);
         }
 
+        //checks by value of each character in the string, if they are equal, then check the size of the strings
+        [[nodiscard]] bool operator>(const StringView& other) const {
+            size_t min_size = (m_size < other.m_size) ? m_size : other.m_size;
+            for (size_t i = 0; i < min_size; ++i) {
+                if (m_data[i] > other.m_data[i]) { return true; }
+                if (m_data[i] < other.m_data[i]) { return false; }
+            }
+            return m_size > other.m_size; //if no values are differentm check if sizes are different
+        }
+        
         [[nodiscard]] bool operator<(const StringView& other) const {
             size_t min_size = (m_size < other.m_size) ? m_size : other.m_size;
-            
+            for (size_t i = 0; i < min_size; ++i) {
+                if (m_data[i] < other.m_data[i]) { return true; }
+                if (m_data[i] > other.m_data[i]) { return false; }
+            }
+            return m_size < other.m_size; //if no values are differentm check if sizes are different
+        }
+        
+        [[nodiscard]] bool operator>=(const StringView& other) const {
+            return !(*this < other);
         }
 
+        [[nodiscard]] bool operator<=(const StringView& other) const {
+            return !(*this > other);
+        }
 };
 
 #endif //COMPILER_CONTAINERS_H
