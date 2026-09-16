@@ -119,6 +119,12 @@ class StringView {
             return *this;
         }
 
+        //member access size/empty
+        [[nodiscard]] size_t size() const { return m_size; }
+        [[nodiscard]] bool empty() const { return m_size == 0; }
+
+
+
         //comparison operators
         [[nodiscard]] bool operator==(const StringView& other) const {
             if (m_size != other.m_size) { return false; }
@@ -141,7 +147,7 @@ class StringView {
             }
             return m_size > other.m_size; //if no values are differentm check if sizes are different
         }
-        
+
         [[nodiscard]] bool operator<(const StringView& other) const {
             size_t min_size = (m_size < other.m_size) ? m_size : other.m_size;
             for (size_t i = 0; i < min_size; ++i) {
@@ -158,6 +164,24 @@ class StringView {
         [[nodiscard]] bool operator<=(const StringView& other) const {
             return !(*this > other);
         }
+
+        //move assignment
+        [[nodiscard]] StringView& operaotr=(StringView&& other) {
+            if (this != other) {
+                m_data = other.m_data;
+                m_size = other.m_size;
+                other.m_data = nullptr;
+                other.m_size = 0;
+            } 
+            return *this;   
+        }
+
+        //check front/back const/non-const
+        [[nodiscard]] const char& front() const { return m_data[0];} 
+        [[nodiscard]] char& front() { return m_data[0];} 
+        [[nodiscard]] const char& back() const { return m_data[m_size - 1];} 
+        [[nodiscard]] char& back() { return m_data[m_size - 1];}
+
 };
 
 #endif //COMPILER_CONTAINERS_H
