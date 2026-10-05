@@ -28,11 +28,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efeb7205-26ae-4cf3-8021-478b2044c1f8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/include/frame_allocator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/containers.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/containers.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kernel_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kernel_main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linker.ld" beforeDir="false" afterPath="$PROJECT_DIR$/linker.ld" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mmio_driver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mmio_driver.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/riscv64-toolchain.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/riscv64-toolchain.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +76,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/misovicpavle/miniOS",
-    "accountId": "e737dd60-a5f8-4662-af9c-cbd3824524e0"
+    "url": "https://github.com/misovicpavle/miniKernel.git",
+    "accountId": "0671fc1b-8a4e-4ea0-85a3-f179ea1550e7"
   }
 }]]></component>
   <component name="HighlightingSettingsPerFile">
@@ -84,23 +92,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.3557575808745863" />
-      <entry key="MS500" value="3.2019619953223684" />
-      <entry key="S2" value="5.506727101872617" />
-      <entry key="S5" value="6.3359108265808475" />
-      <entry key="S10" value="6.688391352306003" />
-      <entry key="S30" value="8.283418601103762" />
-      <entry key="S60" value="11.431666372685743" />
-      <entry key="M2" value="20.308343510213973" />
-      <entry key="M5" value="41.360822206553244" />
-      <entry key="M10" value="56.03308612286805" />
-      <entry key="M15" value="62.39104937834234" />
-      <entry key="M30" value="69.66788979760794" />
-      <entry key="H1" value="73.69274943890642" />
-      <entry key="H2" value="75.8098430797046" />
-      <entry key="H4" value="76.89562979873577" />
-      <entry key="D1" value="77.81463407303636" />
-      <entry key="W1" value="77.97348703276121" />
+      <entry key="MS100" value="1.1043859899285462" />
+      <entry key="MS500" value="1.6363974939714876" />
+      <entry key="S2" value="1.9608893326738102" />
+      <entry key="S5" value="4.008084789013742" />
+      <entry key="S10" value="8.64709414563002" />
+      <entry key="S30" value="17.651587442022528" />
+      <entry key="S60" value="23.63066165288115" />
+      <entry key="M2" value="33.88845479932975" />
+      <entry key="M5" value="56.071004190625885" />
+      <entry key="M10" value="71.56644387732048" />
+      <entry key="M15" value="78.32006092705095" />
+      <entry key="M30" value="86.07894095358117" />
+      <entry key="H1" value="90.38346879246447" />
+      <entry key="H2" value="92.65130546392582" />
+      <entry key="H4" value="93.81536117119995" />
+      <entry key="D1" value="94.80111489100862" />
+      <entry key="W1" value="94.97155223688097" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -122,23 +130,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3244191806208685" />
-      <entry key="MS500" value="3.1670405102835515" />
-      <entry key="S2" value="5.488889365503063" />
-      <entry key="S5" value="6.327564357032554" />
-      <entry key="S10" value="6.683973839229126" />
-      <entry key="S30" value="8.281668170265325" />
-      <entry key="S60" value="11.43053509556037" />
-      <entry key="M2" value="20.307420678498186" />
-      <entry key="M5" value="41.3601093863237" />
-      <entry key="M10" value="56.03260873861234" />
-      <entry key="M15" value="62.390696035397184" />
-      <entry key="M30" value="69.66769300471496" />
-      <entry key="H1" value="73.69264546899528" />
-      <entry key="H2" value="75.80978962773933" />
-      <entry key="H4" value="76.89560269641117" />
-      <entry key="D1" value="77.81462950288017" />
-      <entry key="W1" value="77.9734863785703" />
+      <entry key="MS100" value="1.0756038245707322" />
+      <entry key="MS500" value="1.6291056372966106" />
+      <entry key="S2" value="1.95857770551867" />
+      <entry key="S5" value="4.0038802548968935" />
+      <entry key="S10" value="8.641291342754522" />
+      <entry key="S30" value="17.647364748284303" />
+      <entry key="S60" value="23.6279010914573" />
+      <entry key="M2" value="33.88661363780545" />
+      <entry key="M5" value="56.06989356098857" />
+      <entry key="M10" value="71.56575880962629" />
+      <entry key="M15" value="78.31956650724378" />
+      <entry key="M30" value="86.07867207214343" />
+      <entry key="H1" value="90.38332833708344" />
+      <entry key="H2" value="92.65123365134221" />
+      <entry key="H4" value="93.8153248580875" />
+      <entry key="D1" value="94.80110878139953" />
+      <entry key="W1" value="94.97155136266115" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -152,6 +160,9 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3I30m5shtIn8v30ECHbUCHxVqce" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectStatusUIService">{
   &quot;uiKindId&quot;: &quot;Widget&quot;
 }</component>
@@ -176,9 +187,9 @@
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "PC",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/run/media/misovicpavle/1EC613FBC613D23F/Users/Pavle/CLionProjects/miniOS",
+    "last_opened_file_path": "/run/media/misovicpavle/1EC613FBC613D23F/Users/Pavle/CLionProjects/miniKernel",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
@@ -211,18 +222,10 @@
       </method>
     </configuration>
   </component>
-  <component name="SelectedDebugProfileService">{
-  &quot;profileIdByStamp&quot;: [
-    {
-      &quot;first&quot;: {
-        &quot;##RUN_CONFIGURATION##&quot;: &quot;CMake Application.compiler&quot;,
-        &quot;cmake&quot;: &quot;CMakeBuildProfile:Debug&quot;
-      },
-      &quot;second&quot;: &quot;21604fd1-afcf-48c1-bd87-4e79a24cde72&quot;
-    }
-  ],
-  &quot;modificationCount&quot;: 10
-}</component>
+  <component name="SelectedDebugProfileService"><![CDATA[{
+  "profileIdByStamp": [],
+  "modificationCount": 14
+}]]></component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="efeb7205-26ae-4cf3-8021-478b2044c1f8" name="Changes" comment="" />
@@ -233,6 +236,7 @@
       <workItem from="1788544176282" duration="8895000" />
       <workItem from="1788959983089" duration="1000" />
       <workItem from="1789397034887" duration="404000" />
+      <workItem from="1790468364367" duration="127000" />
     </task>
     <servers />
   </component>
