@@ -28,19 +28,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efeb7205-26ae-4cf3-8021-478b2044c1f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/include/frame_allocator.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/containers.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/containers.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kernel_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kernel_main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linker.ld" beforeDir="false" afterPath="$PROJECT_DIR$/linker.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mmio_driver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mmio_driver.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/riscv64-toolchain.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/riscv64-toolchain.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/frame_allocator.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/frame_allocator.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
