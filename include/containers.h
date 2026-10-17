@@ -19,11 +19,11 @@ class StaticArray {
         const T* data() const { return (T*)m_data; }
         T* data() { return (T*)m_data; }
 
-        const T* begin() const { return (T*)m_data[0]; }
-        T* begin() { return (T*)m_data[0]; }
+        const T* begin() const { return m_data; }
+        T* begin() { return m_data; }
 
-        const T* end() const { return (T*)m_data[N-1]; }
-        T* end() { return (T*)m_data[N-1]; }
+        const T* end() const { return m_data + N; } //one past the last element
+        T* end() { return m_data + N; }
 };
 
 
@@ -67,16 +67,17 @@ class FixedVector {
 
         bool insert(size_t index, const T& value) {
             if (index > m_size || m_size >= N) { return false; }
-            ++m_size;
             //shift all elements to the right
             for (size_t i = m_size; i > index; --i) { m_data[i] = m_data[i-1]; }
             m_data[index] = value;
+            ++m_size;
+            return true;
         }
 
         bool erase(size_t index) {
             if (index >= m_size) { return false; }
             //shift all elements to the left
-            for (size_t i = index; i < m_size; ++i) { m_data[i] = m_data[i+1]; }
+            for (size_t i = index; i + 1 < m_size; ++i) { m_data[i] = m_data[i+1]; }
             --m_size;
             return true;
         }
@@ -86,7 +87,12 @@ class FixedVector {
 
 
 
-#include <cstring> // FIX: needed for strlen
+//no libc with -nostdlib, so no strlen
+constexpr size_t kstrlen(const char* str) {
+    size_t len = 0;
+    while (str[len] != '\0') { ++len; }
+    return len;
+}
 
 class StringView {
     private:
@@ -98,7 +104,7 @@ class StringView {
         StringView(const char* str) {
             if (str) {
                 m_data = str;
-                m_size = strlen(str);
+                m_size = kstrlen(str);
             } else {
                 m_data = nullptr;
                 m_size = 0;
@@ -115,7 +121,7 @@ class StringView {
         //assigment operator (non-const)
         StringView& operator=(const char* str) { // FIX: no [[nodiscard]], non-const return
             m_data = str;
-            m_size = str ? strlen(str) : 0; // FIX: strlen(nullptr) is UB
+            m_size = str ? kstrlen(str) : 0; // FIX: strlen(nullptr) is UB
             return *this;
         }
 
