@@ -8,8 +8,7 @@ volatile uint8_t* const THR       = UART_BASE + 0x00;
 volatile uint8_t* const LSR       = UART_BASE + 0x05;
 
 //converting raw 64b to ascii
-void to_hex(uint64_t number) {
-    uart_puts("0x");
+void to_hex(uint64_t number) { //caller prints the "0x" prefix itself
     char buffer[16];
     int i = 0;
     if (number == 0) {
@@ -29,20 +28,23 @@ void to_hex(uint64_t number) {
 
 //decimal conversion
 void to_int(int number) {
+    //work in unsigned so -INT_MIN doesn't overflow
+    uint64_t value = (uint64_t)number;
     if (number == 0) {
         uart_putc('0');
+        return;
     }
     else if (number < 0) {
         uart_putc('-');
-        number = -number;
+        value = 0 - (uint64_t)(int64_t)number;
     }
 
     char buffer[32];
     int i = 0;
-    while (number > 0) {
-        auto remainder = number % 10;
+    while (value > 0) {
+        auto remainder = value % 10;
         buffer[i++] = remainder + '0'; // convert standard digit to ascii via + '0'
-        number /= 10;
+        value /= 10;
     }
 
     while (i > 0) { //write out the number
@@ -58,6 +60,7 @@ void kprintf(const char* format, ...) { //... - makes the compiler know that arg
         //% checker
         if (*format == '%') {
             ++format;
+            if (*format == '\0') { break; } //lone % at the end of the string
             if (*format == 'c') {
                 auto result = va_arg(args, int);
                 uart_putc(result);
@@ -70,9 +73,14 @@ void kprintf(const char* format, ...) { //... - makes the compiler know that arg
                 auto number = va_arg(args, int);
                 to_int(number);
             }
-            else if (*format == 'x' || *format == 'p') {
+            else if (*format == 'x') {
+                //%x takes an unsigned int - reading 64 bits would pick up RV64's sign extension
+                auto result = va_arg(args, unsigned int);
+                to_hex(result);
+            }
+            else if (*format == 'p') {
                 auto result = va_arg(args, uint64_t);
-                uart_putc(result);
+                to_hex(result);
             }
             else if (*format == '%') {
                 uart_putc('%');
