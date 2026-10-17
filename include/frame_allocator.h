@@ -4,7 +4,7 @@
 
 #ifndef COMPILER_FRAME_ALLOCATOR_H
 #define COMPILER_FRAME_ALLOCATOR_H
-#include <cstdint>
+#include <stdint.h> //C header - available freestanding, unlike <cstdint>
 /*
 DS Approach for paging
 | Pointer to next free page - 8 bytes | Rest of the 4KB-8B page to be used |
@@ -17,8 +17,11 @@ struct PageNode {
 
 inline PageNode* nextFreePage = nullptr;
 
-void init_frame_allocator() {
-    uintptr_t start_addr = 0x80001000; //start of QEMU RAM
+extern "C" char _kernel_end[]; //from linker.ld - first byte after the kernel image and its stack
+
+inline void init_frame_allocator() {
+    //start at the first page after the kernel, otherwise we hand out pages holding our own code/stack
+    uintptr_t start_addr = (reinterpret_cast<uintptr_t>(_kernel_end) + 0xFFF) & ~uintptr_t(0xFFF);
     uintptr_t end_addr   = 0x88000000; //end of QEMU RAM
 
     PageNode* p = reinterpret_cast<PageNode*>(start_addr);
@@ -36,7 +39,7 @@ void init_frame_allocator() {
     }
 }
 //void* instead of uintptr_t* because void can be converted to any type w/o explicit conversions/casting
-void* alloc_page() {
+inline void* alloc_page() {
     //RAM-0x80000000, 4KB-0x1000
     //PageNode p; -> cpu stack variable, gets deleted at return of this function
     if (nextFreePage == nullptr) { //no more memory?
@@ -48,7 +51,7 @@ void* alloc_page() {
 
 }
 
-void* free_page(void* ptr) {
+inline void free_page(void* ptr) {
     if (ptr != nullptr) {
         auto* node = reinterpret_cast<PageNode*>(ptr); //move 4KB to the left of the last used page
         node->nextPage = nextFreePage; //give the old page that you're freeing now where it should look for a new page - if someone reuses it
