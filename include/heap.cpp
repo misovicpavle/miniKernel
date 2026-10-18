@@ -27,6 +27,8 @@ size_t min(size_t& x, size_t& y) {
     return x;
 }
 
+
+//THIS IS THE LAYOUR OF THE FULL NODE
 //grab a fresh page and turn it into one big free node (not yet linked into the list)
 static node_t* new_page() {
     node_t* new_alloc = (node_t *)alloc_page(); //return from syscall
@@ -43,7 +45,7 @@ static void unlink(node_t* prev, node_t* node) {
     if (prev) prev->next = node->next;
     else free_list_head = node->next;
     if (node == free_list_tail) free_list_tail = prev;
-    node->next = nullptr;
+    node->next = nullptr; //node is the node to removed, also detach where it points to
 }
 
 void* kmalloc(size_t size) {
