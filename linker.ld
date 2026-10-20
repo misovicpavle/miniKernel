@@ -9,8 +9,10 @@ SECTIONS
     .data : { *(.data*) }
     .bss : { *(.bss*) }
 }
+. = . + 0x10000;
 
-_stack_top = . + 0x10000; /* 64kB of RAM after the .bss */
+_stack_top = .; /* 64kB of RAM after the .bss */
+_end = .;
 /* 0001 0000 0000 0000 0000 */
 /* stack grows downard, so .bss+64kB and then it moves
 toward .bss as it allocates more ram for stack */

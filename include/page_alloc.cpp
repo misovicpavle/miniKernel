@@ -10,7 +10,7 @@ static page_node* free_page_head = nullptr;
 //expose the end from the linker file:
 extern "C" char _end[];
 uintptr_t free_ram_start = reinterpret_cast<uintptr_t>(_end);
-uintptr_t ram_end = 0x80000000 + (128 * 1024 * 1024); //128MB DRAM Limit on QEMU
+uintptr_t ram_end = RAM_END; //128MB DRAM Limit on QEMU
 
 //called @ boot-time
 void init_page(uintptr_t _start, uintptr_t _end) {
