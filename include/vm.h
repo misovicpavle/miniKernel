@@ -2,7 +2,6 @@
 #define VM_H
 #include "page_alloc.h"
 
-constexpr size_t PAGE_SIZE = 4096;
 constexpr size_t PTE_SIZE = PAGE_SIZE / sizeof(uint64_t); // 512 entries
 
 #include <stdint.h>
@@ -29,7 +28,7 @@ struct PageTable {
 };
 
 consteval uint64_t extract_vpn(uintptr_t virtual_address, size_t tree_level) {
-        return (virtual_address >> (12 + (tree_level * 9))) & 0x1FF;
+    return (virtual_address >> (12 + (tree_level * 9))) & 0x1FF;
 }
 
 #endif //VM_H
