@@ -20,14 +20,14 @@ enum class PTEFlags : uint64_t {
 };
 
 struct PageTableEntry {
-    uint64_t pte;
+    uint64_t PTE;
 };
 
 struct PageTable {
-    PageTableEntry PageTableEntries[PTE_SIZE];
+    PageTableEntry PTE[PTE_SIZE]; //root page table - Gigapage(1GB)
 };
 
-consteval uint64_t extract_vpn(uintptr_t virtual_address, size_t tree_level) {
+uint64_t extract_vpn(uintptr_t virtual_address, size_t tree_level) {
     return (virtual_address >> (12 + (tree_level * 9))) & 0x1FF;
 }
 
