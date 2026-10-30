@@ -87,6 +87,10 @@ void enable_paging() {
     uint64_t satp_mode = 8ULL << 60; //only 4 needed bit for mode 8 of the sv39
     uintptr_t satp_input = satp_mode | reinterpret_cast<uintptr_t>(&kernelPageTable) >> 12;
     //satp input layout: 4b MODE | 16b ASID | 44b PFN
+    //satp - supeervisor address translation protection
+    //csrw - control status register write
     asm volatile("csrw satp, %0" : "r"(satp_input)); 
     asm volatile("sfence.vma zero, zero"); //TLB flush
 }
+
+//stvec - supervisor trap vector base address register - it catches cpu exceptions
