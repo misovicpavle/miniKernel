@@ -17,6 +17,9 @@ void kvminit() {
     
     uintptr_t text_end_addr = reinterpret_cast<uintptr_t>(_text_end);
 
+    //mam uart for the kernel
+    map_page(kernelPageTable, 0x10000000ULL, 0x10000000ULL, kdata_flags);
+
     // 1. Map Kernel Code (.text): 0x80000000 to _text_end (Read + Execute)
     for (uintptr_t address = 0x80000000ULL; address < text_end_addr; address += PAGE_SIZE) {
         map_page(kernelPageTable, address, address, ktext_flags);
