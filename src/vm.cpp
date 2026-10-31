@@ -89,8 +89,6 @@ void enable_paging() {
     //satp input layout: 4b MODE | 16b ASID | 44b PFN
     //satp - supeervisor address translation protection
     //csrw - control status register write
-    asm volatile("csrw satp, %0" : "r"(satp_input)); 
+    asm volatile("csrw satp, %0" : : "r"(satp_input)); //:-input, ::-output, :::registers(clobbers)
     asm volatile("sfence.vma zero, zero"); //TLB flush
 }
-
-//stvec - supervisor trap vector base address register - it catches cpu exceptions
