@@ -5,6 +5,7 @@ SECTIONS
     /* .text is at qemu 64bit RISC-V RAM-start address */
     . = 0x80000000;
     .text : { *(.text*) }
+    _text_end = .;
     .rodata : { *(.rodata*) }
     .data : { *(.data*) }
     .bss : { *(.bss*) }

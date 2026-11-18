@@ -81,6 +81,7 @@ void kprintf(const char* format, ...) { //... - makes the compiler know that arg
             else if (*format == 'p') {
                 auto result = va_arg(args, uint64_t);
                 to_hex(result);
+                to_hex(result);
             }
             else if (*format == '%') {
                 uart_putc('%');
