@@ -1,8 +1,5 @@
 #include "include/uart.h"
-#include "src/mmio_driver.cpp"
-#include "src/trap.cpp"
-#include "src/trap_entry.S"
-#include "src/vm.cpp"
+#include <vm.h>
 
 extern "C" void kernel_main() {
     uint64_t stack_ptr;
@@ -10,7 +7,7 @@ extern "C" void kernel_main() {
     //uart_init();
     uart_puts("Hi kernel! Your output stream is active!\n");
     
-    trap_init();
+    //trap_init();
     uart_puts("Hi kernel! Your trap handling is active!\n");
 
     enable_paging();

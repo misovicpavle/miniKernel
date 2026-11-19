@@ -1,5 +1,6 @@
 #include "include/vm.h"
 #include "include/page_alloc.h"
+#include <cstring>
 // KERNEL SPACE - VIRTUAL MEMORY
 #define RAM_END 0x88000000ULL // Example: 128MB DRAM boundary
 //initilize the virtual memory for the kernel itself
@@ -32,6 +33,30 @@ void kvminit() {
 }
 
 bool map_page(PageTable& processTable, uintptr_t virtual_address, uintptr_t physical_address, uint64_t Flags) {
+    // 0. Both addresses must refer to the beginning of a page.  The low
+    // log2(PAGE_SIZE) bits hold the byte offset within that page.  They must
+    // be zero; otherwise the address is unaligned and could map the wrong
+    // page.  PAGE_SIZE - 1 masks exactly those offset bits:
+    //
+    //     address & (PAGE_SIZE - 1) == 0
+    //
+    // This rejects unaligned input instead of silently rounding it down or up,
+    // which could map a different page than the caller requested.
+    //
+    // constexpr makes the mask a compile-time constant and requires
+    // PAGE_SIZE - 1 to be evaluable at compile time.  Without constexpr, a
+    // `const uintptr_t` would still be read-only, but its initializer could be
+    // evaluated at runtime; the compiler might optimize it away, but the code
+    // would not require that optimization.  `constexpr` documents and enforces
+    // that this value is fixed during compilation.
+    // Sv39 uses 4 KiB pages, so bits 0..11 are the page offset.
+    constexpr unsigned page_offset_bits = 12;
+    constexpr uintptr_t page_offset_mask = (uintptr_t{1} << page_offset_bits) - 1;
+    if ((virtual_address & page_offset_mask) != 0 ||
+        (physical_address & page_offset_mask) != 0) {
+        return false;
+    }
+
     // 1. RISC-V Safety Check: W=1, R=0 is illegal
     bool is_write = Flags & static_cast<uint64_t>(PTEFlags::Write);
     bool is_read  = Flags & static_cast<uint64_t>(PTEFlags::Read);
@@ -46,7 +71,7 @@ bool map_page(PageTable& processTable, uintptr_t virtual_address, uintptr_t phys
     if (pte->PTE & valid_bit) return false; 
 
     // 4. Construct entry and write through the Level 0 pointer
-    uint64_t PPN = physical_address >> 12;
+    uint64_t PPN = physical_address >> page_offset_bits;
     pte->PTE = (PPN << 10) | Flags | valid_bit;
 
     return true;
@@ -65,7 +90,10 @@ PageTableEntry* walk(PageTable& rootTable, uintptr_t virtual_address, bool alloc
         if (!(PTE.PTE & static_cast<uint64_t>(PTEFlags::Valid))) {
             if (alloc) {
                 auto address = alloc_page();
-                //memset(address)
+                if (address == nullptr) return nullptr;
+
+                std::memset(address, 0, PAGE_SIZE);
+
                 auto physical_address = reinterpret_cast<uintptr_t>(address);
                 auto newPPN = physical_address >> 12;
                 auto valid_bit = static_cast<uint64_t>(PTEFlags::Valid);

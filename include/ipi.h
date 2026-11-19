@@ -13,5 +13,10 @@ enum class IPI_TYPE {
     FUNC_EXEC, 
 }; 
 
-void add_ipi_instr() {} //append right
-void pop_ipi_instr() {} //pop left
+struct IPI_ENTRY {
+    IPI_TYPE ipi_instr;
+    uint64_t virtual_mem_addr;
+};
+
+bool add_ipi_instr(uint64_t target_hart_id, IPI_ENTRY NEW_ENTRY) {} //append right
+bool pop_ipi_instr(IPI_ENTRY* removed_entry) {} //pop left

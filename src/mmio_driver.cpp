@@ -9,7 +9,6 @@ volatile uint8_t* const LSR       = UART_BASE + 0x05;
 
 //converting raw 64b to ascii
 void to_hex(uint64_t number) {
-    uart_puts("0x");
     char buffer[16];
     int i = 0;
     if (number == 0) {
@@ -72,6 +71,7 @@ void kprintf(const char* format, ...) { //... - makes the compiler know that arg
             }
             else if (*format == 'x' || *format == 'p') {
                 auto result = va_arg(args, uint64_t);
+                    if (*format == 'p') uart_puts("0x");
                 to_hex(result);
             }
             else if (*format == '%') {

@@ -57,6 +57,9 @@ enum class IPI_CODES { TLB_FLUSH, SHUTDOWN,  };
 extern "C" void handle_trap() noexcept {
     uint64_t sepc, scause, stval, sstatus;
     sepc = r_sepc();
+    scause = r_scause();
+    stval = r_stval();
+    sstatus = r_sstatus();
     //invalid
     
     //core hart-id read, register 'tp'
@@ -69,7 +72,7 @@ extern "C" void handle_trap() noexcept {
             /* READING THE SIP REGISTER - SUPERVISOR INTERRUPT PENDING */
             /* its triggered when a interrupt happens - we inspect/clear SIP: */
             uint64_t SIP;
-            asm volatile("csrr %0, sip" : : "=r"(SIP)); 
+            asm volatile("csrr %0, sip" : "=r"(SIP)); 
             switch(errorCode) {
                 case 1: /* Supervisor Software Interrupt Pending - SSIP */
                     uint64_t newSIP = SIP & ~(1ULL << 1); // reset SSIP in SIP

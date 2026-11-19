@@ -2,11 +2,6 @@
 #define NUM_CORES 8
 #define IPI_QUEUE_SIZE 64
 
-struct IPI_ENTRY {
-    IPI_TYPE ipi_instr;
-    uint64_t virtual_mem_addr;
-};
-
 struct HART_MAILBOX {
     uint64_t HART_ID;
     IPI_ENTRY IPI_BUFFER[IPI_QUEUE_SIZE];
@@ -72,11 +67,11 @@ bool pop_ipi_instr(IPI_ENTRY* removed_entry) { //pop left - receiver/consumer
     asm volatile("mv %0, tp" : "=r"(current_hart_id));
     //loop through cores until you find core = hart_id
     for (size_t i = 0; i < NUM_CORES; i++) {
-        if (CORES[i].IPI_HEAD == CORES[i].IPI_TAIL) { 
-            lock_free(&lock);
-            return false; 
-        } //queue empty/none
         if (CORES[i].HART_ID == current_hart_id) {
+            if (CORES[i].IPI_HEAD == CORES[i].IPI_TAIL) { //queue empty/none for a given core 
+                lock_free(&lock);
+                return false; 
+            } 
             //modify the cores ipi buffer - pop instruction, mod 64 is a trick so if its 64 it circles to 0 again
             *removed_entry = CORES[i].IPI_BUFFER[CORES[i].IPI_HEAD];
             CORES[i].IPI_HEAD = (CORES[i].IPI_HEAD + 1) % 64; //move to the next instruction
