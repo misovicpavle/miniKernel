@@ -27,8 +27,13 @@ struct PageTable {
     PageTableEntry PTE[PTE_SIZE]; //root page table - Gigapage(1GB)
 };
 
-uint64_t extract_vpn(uintptr_t virtual_address, size_t tree_level) {
+static inline uint64_t extract_vpn(uintptr_t virtual_address, size_t tree_level) {
     return (virtual_address >> (12 + (tree_level * 9))) & 0x1FF;
 }
+
+void kvminit() {}
+bool map_page(PageTable& processTable, uintptr_t virtual_address, uintptr_t physical_address, uint64_t Flags) {}
+PageTableEntry* walk(PageTable& rootTable, uintptr_t virtual_address, bool alloc) {}
+void enable_paging() {}
 
 #endif //VM_H
