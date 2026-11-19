@@ -10,9 +10,9 @@ SECTIONS
     .bss : { *(.bss*) }
     _kernel_end = .;
 }
-. = . + 0x10000;
-_stack_top = .; /* 64kB of RAM after the .bss */
-_end = .;
+
+_stack_top = . + 0x10000; /* 64kB of RAM after the .bss */
+_kernel_end = ALIGN(_stack_top, 0x1000); /* first free page - the frame allocator starts here */
 /* 0001 0000 0000 0000 0000 */
 /* stack grows downard, so .bss+64kB and then it moves
 toward .bss as it allocates more ram for stack */

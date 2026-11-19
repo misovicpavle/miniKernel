@@ -6,6 +6,6 @@
 
 void uart_putc(char c);
 void uart_puts(const char* str);
-void kprintf(const char* format);
+void kprintf(const char* format, ...);
 
 #endif
